@@ -18,10 +18,10 @@ class OpenWeatherMapClient
      */
     private $httpClient;
 
-    public function __construct()
+    public function __construct(Client $client)
     {
-        $this->appId = env('OPEN_WEATHER_APP_ID', false);
-        $this->httpClient = new Client();
+        $this->appId = env('OPEN_WEATHER_APP_ID');
+        $this->httpClient = $client;
     }
 
     public function getWeatherForcast(string $lat, string $lon): array

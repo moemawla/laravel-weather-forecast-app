@@ -6,6 +6,7 @@ use App\Clients\OpenWeatherMapClient;
 use App\Dictionaries\CitiesDictionary;
 use App\DtoFactories\SingleDayWeatherForecastDtoFactory;
 use App\Exceptions\MissingArrayKeyException;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class CityWeatherController extends Controller
@@ -22,7 +23,7 @@ class CityWeatherController extends Controller
 
     public function __construct()
     {
-        $this->apiClient = new OpenWeatherMapClient();
+        $this->apiClient = new OpenWeatherMapClient(new Client());
         $this->forecastsFactory = new SingleDayWeatherForecastDtoFactory();
     }
 
